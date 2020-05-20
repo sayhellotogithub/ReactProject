@@ -77,11 +77,19 @@ import com.android.build.OutputFile
  * ]
  */
 
-project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+project.ext.react=[
+        entryFile:"index.js",
+        bundleAssetName:"index.android.bundle",
+        bundleInDebug:false,
+        bundleInAlpha:true,
+        bundleInBeta:true,
+        enableHermes: false,
+        bundleInRelease: true,
 ]
+//project.ext.react = [
+//    enableHermes: false,  // clean and rebuild if changing
+//]
 
-apply from: "../../node_modules/react-native/react.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -221,12 +229,8 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-project.ext.react={
-entryFile:"index.js",
-bundleAssetName:"index.android.bundle",
-bundleInDebug:true,
-bundleInAlpha:true,
-bundleInBeta:true
-}
+
+//
+
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

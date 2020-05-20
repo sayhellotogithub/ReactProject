@@ -9,6 +9,7 @@ import SectionListBasics from './page/SectionListBasics'
 import FetchMovieList from './page/FetchMovieList'
 import FlexDemo from './page/FlexDemo'
 import FadeAnimatedView from "./page/FadeAnimatedView";
+import NativePropsView from "./page/NativePropsView"
 class Greeting extends Component {
     render() {
         return <View style={{alignItems: 'center', marginTop: 50}}>
