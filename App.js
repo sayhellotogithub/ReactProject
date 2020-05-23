@@ -20,7 +20,7 @@ class Greeting extends Component {
 
 export default class HelloWorldApp extends Component {
     render() {
-        return ( <FadeAnimatedView/>
+        return ( <Greeting name="app"/>
        );
         // {/*<PizzaTranslator/>*/}
         // {/*<FetchMovieList/>*/}
