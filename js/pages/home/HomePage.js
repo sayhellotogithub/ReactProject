@@ -14,6 +14,7 @@ export default class HomePage extends BasePage {
 
     constructor(props) {
         super(props);
+        this.navigation = props.navigation
         this.state = {
             sections: [],
             rotations: [],
@@ -73,7 +74,7 @@ export default class HomePage extends BasePage {
         return (
             <NewsListItem id={item.id}
                           onPressItem={() => {
-                              // this.props.navigation.navigate('newsDetail', {newsId: item.id})
+                              this.navigation.navigate('NewsDetailScreen', {newId: item.id})
                           }}
                           item={item}
             />)
@@ -99,7 +100,7 @@ export default class HomePage extends BasePage {
                             (<SwiperHeader
                                 stories={this.state.rotations}
                                 onPress={(id) => {
-                                    // this.props.navigation.navigate("newDetail", {newId: id})
+                                    this.navigation.navigate("NewsDetailScreen", {newId: id})
                                 }}> </SwiperHeader>)
                         }
                         renderItem={this.renderItem.bind(this)}

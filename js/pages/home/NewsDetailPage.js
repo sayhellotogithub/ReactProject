@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {WebView, StyleSheet, View} from 'react-native'
+import {StyleSheet, View} from 'react-native'
+import {WebView} from 'react-native-webview'
 import BasePage from "../BasePage";
 import NetUtil from "../../services/NetUtil";
 
@@ -14,8 +15,11 @@ export default class NewsDetailPage extends BasePage {
 
     constructor(props) {
         super(props);
-        const {params} = this.props.navigation.state
-        const newId = params ? params.newId : '0'
+        let params = props.route.params
+        console.log(props)
+        console.log(params)
+        console.log(params.newId)
+        let newId = params ? params.newId : '0'
         this.state = {
             newId: newId,
             detail: null,
@@ -23,6 +27,7 @@ export default class NewsDetailPage extends BasePage {
     }
 
     componentDidMount() {
+        this.getNewsDetail()
     }
 
     componentWillUnmount() {
@@ -49,12 +54,12 @@ export default class NewsDetailPage extends BasePage {
     render() {
         if (this.state.detail !== null) {
             const script = 'document.getElementsByClassName(\'header-for-mobile\')[0].style.display="none";';
-            return super.render(<View style={styles.container}>
+            return super.render(
                 <WebView
-                    source={{url: this.state.detail.share_url}}
+                    source={{uri: this.state.detail.share_url}}
                     injectedJavaScript={script}
                 />
-            </View>)
+            )
         }
         return super.render(null)
     }

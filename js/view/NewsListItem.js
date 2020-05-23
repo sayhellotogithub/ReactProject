@@ -15,7 +15,7 @@ export default class NewsListItem extends Component {
     render() {
         let imageView = this.props.item.images && this.props.item.images.length > 0 ?
             <ImageItemView source={{uri: this.props.item.images[0]}} style={styles.image}/> : null;
-        return (<TouchableWithoutFeedback onPress={this._clickItem()}>
+        return (<TouchableWithoutFeedback onPress={this._clickItem}>
             <View style={styles.container}>
                 <View style={styles.item}>
                     <Text style={styles.title}>
